@@ -1,0 +1,9 @@
+version: "3"
+services:
+  database:
+    image: postgis/postgis:10-2.5-alpine
+    environment:
+      - POSTGRES_USER=landdox
+      - POSTGRES_PASSWORD=landdox
+    ports:
+      - 65432:5432
