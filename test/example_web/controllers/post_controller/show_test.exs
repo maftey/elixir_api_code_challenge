@@ -18,4 +18,8 @@ defmodule ExampleWeb.PostController.ShowTest do
              "title" => "hello"
            }
   end
+
+  test "post is missed" , %{conn: conn} do
+    conn |> get("/posts/1") |> json_response(404)
+  end
 end
