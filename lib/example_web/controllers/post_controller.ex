@@ -20,4 +20,9 @@ defmodule ExampleWeb.PostController do
   def create(conn, _params) do
     conn |> put_status(400) |> json(:error)
   end
+
+  def index(conn, _params) do
+    {:ok, posts} = Posts.get_all_posts()
+    json(conn, posts)
+  end
 end

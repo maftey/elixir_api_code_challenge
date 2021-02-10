@@ -18,6 +18,7 @@ defmodule ExampleWeb.Router do
 
     get "/", PageController, :index
     get "/posts/:id", PostController, :show
+    get "/posts/", PostController, :index
     post "/posts/", PostController, :create
   end
 
