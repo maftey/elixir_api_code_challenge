@@ -11,7 +11,13 @@ defmodule ExampleWeb.PostController do
   end
 
   def create(conn, _params = %{"title" => title, "content" => content}) do
-    {:ok, post} = Posts.create_post(%{title: title, content: content})
-    json(conn, post)
+    case Posts.create_post(%{title: title, content: content}) do
+      {:ok, post} -> json(conn, post)
+      {:error, _} -> conn |> put_status(400) |> json(:error)
+    end
+  end
+
+  def create(conn, _params) do
+    conn |> put_status(400) |> json(:error)
   end
 end

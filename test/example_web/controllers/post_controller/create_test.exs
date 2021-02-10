@@ -20,4 +20,12 @@ defmodule ExampleWeb.PostController.CreateTest do
     {:ok, post} = Posts.get_post_by_id(response["id"])
     assert post.id == response["id"]
   end
+
+  test "invalid parameters", %{conn: conn} do
+    post = %{
+      "ttitle" => "hello",
+      "content" => "A long post about stuff"
+    }
+    conn |> post("/posts/", post) |> json_response(400)
+  end
 end
