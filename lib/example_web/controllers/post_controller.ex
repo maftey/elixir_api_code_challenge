@@ -25,4 +25,11 @@ defmodule ExampleWeb.PostController do
     {:ok, posts} = Posts.get_all_posts()
     json(conn, posts)
   end
+
+  def delete(conn, _params = %{"id" => post_id}) do
+    case Posts.delete_post_by_id(post_id) do
+      {:ok, post} -> json(conn, "post #{post.id} was deleted")
+      {:error, :post_not_found} -> conn |> put_status(404) |> json(:post_not_found)
+    end
+  end
 end

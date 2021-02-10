@@ -37,7 +37,7 @@ defmodule ExampleWeb.PostController.IndexTest do
       "content" => p["content"]}
     end);
 
-    assert response_post = posts
+    assert response_post == posts
 
   end
 end

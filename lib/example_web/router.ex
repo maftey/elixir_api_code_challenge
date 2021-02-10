@@ -20,6 +20,7 @@ defmodule ExampleWeb.Router do
     get "/posts/:id", PostController, :show
     get "/posts/", PostController, :index
     post "/posts/", PostController, :create
+    delete "/posts/:id", PostController, :delete
   end
 
   # Other scopes may use custom stacks.
